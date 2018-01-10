@@ -1,2 +1,1 @@
-# quotes
-Belajar membuat blog Quotes di Laravel sebagai pembelajaran dasar laravel
+Ini adalah project untuk latihan membuat website Laravel
