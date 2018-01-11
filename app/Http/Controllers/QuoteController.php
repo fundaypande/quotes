@@ -19,6 +19,7 @@ class QuoteController extends Controller
     public function index()
     {
         //
+        return view('quotes.view');
     }
 
     /**
@@ -66,6 +67,7 @@ class QuoteController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
