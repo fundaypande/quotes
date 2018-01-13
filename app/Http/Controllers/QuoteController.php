@@ -19,7 +19,10 @@ class QuoteController extends Controller
     public function index()
     {
         //
-        return view('quotes.view');
+        $quotes = Quote::
+          join('users', 'users.id', '=', 'quotes.user_id')
+          ->get();
+        return view('quotes.view', compact('quotes'));
     }
 
     /**
@@ -50,24 +53,35 @@ class QuoteController extends Controller
         //membuat URL dengan title
         $slug = str_slug($request -> title, '-');
 
+        //cek slug tidak duplikat
+        if(Quote::where('slug', $slug) -> first() != null)
+          $slug = $slug . '-' . time();
+
         $quotes = Quote::create([
           'title' => $request -> title,
           'slug' => $slug,
           'subject' => $request -> subject,
           'user_id' => Auth::user()->id
         ]);
+
+        return redirect('quotes')->with('msg', 'kutipan berhasil di submit');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
+        $quote = Quote::where('slug', $slug)
+          ->join('users', 'users.id', '=', 'quotes.user_id')
+          ->first();
+        if(empty($quote)) abort(404);
 
+        return view('quotes.single', compact('quote'));
     }
 
     /**
