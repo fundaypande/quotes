@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Quote;
 
 class User extends Authenticatable
 {
@@ -28,6 +29,6 @@ class User extends Authenticatable
     ];
 
     public function quotes(){
-      return $this->belongsTo('App\Quote');
+      return $this->hasMany('App\Quote');
     }
 }

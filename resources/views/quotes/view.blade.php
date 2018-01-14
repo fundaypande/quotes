@@ -11,8 +11,20 @@
       </div>
   @endif
 
+  @if(session('msg-warning'))
+      <div class="alert alert-warning">
+        <p> {{ session('msg-warning') }}</p>
+      </div>
+  @endif
+
 
   <p>Daftar Kutipan</p>
+  <center>
+    <a href="/quotes/random" class="btn btn-primary">Random Quotes</a>
+    <br>
+    <br>
+    <hr>
+  </center>
   <div class="row">
     @foreach ($quotes as $quote)
     <div class="col-md-4">

@@ -52,6 +52,16 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+
+                                  <li>
+                                    <a href="/profile">Profile</a>
+                                  </li>
+                                    <li>
+                                      <a href="/quotes">Beranda Kutipan</a>
+                                    </li>
+                                    <li>
+                                      <a href="/quotes/create">Buat Quotes</a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
