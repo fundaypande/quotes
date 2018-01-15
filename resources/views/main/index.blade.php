@@ -68,74 +68,19 @@
 			<section id="two" class="wrapper style1 special">
 				<div class="inner">
 					<header>
-						<h2>Ipsum Feugiat</h2>
-						<p>Semper suscipit posuere apede</p>
+						<h2>Daftar User</h2>
+						<p>Beberapa User Yang Aktif</p>
 					</header>
 					<div class="flex flex-4">
-						<div class="box person">
-							<div class="image round">
-								<img src="images/pic03.jpg" alt="Person 1" />
+						@foreach( $users -> all() as $user )
+							<div class="box person">
+								<div class="image round">
+									<img src="images/pic06.jpg" alt="Person 1" />
+								</div>
+								<h3>{{ $user -> name }}</h3>
+								<p>{{ $user -> email }}</p>
 							</div>
-							<h3>Magna</h3>
-							<p>Cipdum dolor</p>
-						</div>
-						<div class="box person">
-							<div class="image round">
-								<img src="images/pic04.jpg" alt="Person 2" />
-							</div>
-							<h3>Ipsum</h3>
-							<p>Vestibulum comm</p>
-						</div>
-						<div class="box person">
-							<div class="image round">
-								<img src="images/pic05.jpg" alt="Person 3" />
-							</div>
-							<h3>Tempus</h3>
-							<p>Fusce pellentes</p>
-						</div>
-						<div class="box person">
-							<div class="image round">
-								<img src="images/pic06.jpg" alt="Person 4" />
-							</div>
-							<h3>Dolore</h3>
-							<p>Praesent placer</p>
-						</div>
-					</div>
-				</div>
-			</section>
-
-		<!-- Three -->
-			<section id="three" class="wrapper special">
-				<div class="inner">
-					<header class="align-center">
-						<h2>Nunc Dignissim</h2>
-						<p>Aliquam erat volutpat nam dui </p>
-					</header>
-					<div class="flex flex-2">
-						<article>
-							<div class="image fit">
-								<img src="images/pic01.jpg" alt="Pic 01" />
-							</div>
-							<header>
-								<h3>Praesent placerat magna</h3>
-							</header>
-							<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor lorem ipsum.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
-						<article>
-							<div class="image fit">
-								<img src="images/pic02.jpg" alt="Pic 02" />
-							</div>
-							<header>
-								<h3>Fusce pellentesque tempus</h3>
-							</header>
-							<p>Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna non comodo sodales tempus.</p>
-							<footer>
-								<a href="#" class="button special">More</a>
-							</footer>
-						</article>
+						@endforeach
 					</div>
 				</div>
 			</section>
@@ -159,10 +104,10 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="{!! asset('assets/js/jquery.min.js') !!}"></script>
-			<script src="{!! asset('assets/js/skel.min.js') !!}"></script>
-			<script src="{!! asset('assets/js/util.js') !!}"></script>
-			<script src="{!! asset('assets/js/main.js') !!}"></script>
+			<script src="{!! asset('js/jquery.min.js') !!}"></script>
+			<script src="{!! asset('js/skel.min.js') !!}"></script>
+			<script src="{!! asset('js/util.js') !!}"></script>
+			<script src="{!! asset('js/main.js') !!}"></script>
 
 	</body>
 </html>

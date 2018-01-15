@@ -16,13 +16,21 @@ class QuoteController extends Controller
         return view('quotes.view', compact('quotes'));
     }
 
+
     public function home()
     {
         //
         $quotes = Quote::limit(6)
           ->orderBy('id', 'desc')
           ->get();
-        return view('main.index', compact('quotes'));
+        $users = User::limit(4)
+          ->orderBy('id', 'desc')
+          ->get();
+        return view('main.index', compact('quotes', 'users'));
+    }
+
+    public function dashboard(){
+      return view('admin.dashboard');
     }
 
     public function create()

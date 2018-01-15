@@ -5,6 +5,7 @@
 Route::group(['middleware' => 'auth'], function(){
   Route::resource('quotes', 'QuoteController', ['except' => ['index', 'show']]);
   Route::post('comments/{id}', 'QuoteCommentCont@store');
+  Route::get('/dashboard', 'HomeController@index')->name('home');
 });
 
 
@@ -13,8 +14,9 @@ Route::group(['middleware' => 'auth'], function(){
 // });
 Route::get('/', 'QuoteController@home');
 
+
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
 //membuat route pada localhost/quotes yang menampilkan function index dan show
 
 Route::get('quotes/random', 'QuoteController@random');

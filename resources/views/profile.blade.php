@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.dashboard')
 
 @section('content')
 <div class="container">
@@ -10,7 +10,6 @@
               <a href="/quotes/{{ $quote -> slug }}"><li class="list-group-item"> {{ $quote -> title }} </li></a>
             @endforeach
           </ul>
-
     </div>
 </div>
 @endsection
