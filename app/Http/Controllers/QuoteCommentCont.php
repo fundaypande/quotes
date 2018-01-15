@@ -4,52 +4,26 @@ use Illuminate\Http\Request;
 //menggunakan Tabel atau Model apa
 use App\User;
 use App\Quote;
+use App\QuoteComment;
 use Auth;
-class QuoteController extends Controller
+class QuoteCommentCont extends Controller
 {
-    public function index()
-    {
-        //
-        $quotes = Quote::
-          join('users', 'users.id', '=', 'quotes.user_id')
-          ->get();
-        return view('quotes.view', compact('quotes'));
-    }
 
-    public function home()
+    public function store(Request $request, $id)
     {
-        //
-        $quotes = Quote::limit(6)
-          ->orderBy('id', 'desc')
-          ->get();
-        return view('main.index', compact('quotes'));
-    }
+      $quote = Quote::findOrFail($id);
 
-    public function create()
-    {
-        //fungsi untuk membuat quotes
-        return view('quotes.create');
-    }
-
-    public function store(Request $request)
-    {
        //membuat validasi
         $this -> validate($request, [
-          'title' => 'required|min:3',
           'subject' => 'required|min:5'
         ]);
-        //membuat URL dengan title
-        $slug = str_slug($request -> title, '-');
-        //cek slug tidak duplikat
-        if(Quote::where('slug', $slug) -> first() != null)
-          $slug = $slug . '-' . time();
-        $quotes = Quote::create([
-          'title' => $request -> title,
-          'slug' => $slug,
+
+        $comment = QuoteComment::create([
           'subject' => $request -> subject,
-          'user_id' => Auth::user()->id
+          'user_id' => Auth::user()->id,
+          'quote_id' => $id
         ]);
-        return redirect('quotes')->with('msg', 'kutipan berhasil di submit');
+        return redirect('quotes/'.$quote -> slug)->with('msg', 'komentar berhasil di submit');
     }
 
     public function show($slug)

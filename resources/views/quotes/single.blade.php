@@ -21,11 +21,43 @@
       <input type="hidden" name="_method" value="DELETE">
       <button type="submit" class="btn btn-danger" name="button">Hapus</button>
     </form>
-  @else
-    bodo
   @endif
   <br>
   <hr>
   <a href="/quotes">Kembali Ke Quotes</a>
+  <br><br><hr>
+
+  <div class="comment">
+    <h4>Daftar Komentar</h4>
+
+    <!-- menampilkan komentar -->
+    @foreach($quote -> comments as $comment)
+      <p>{{ $comment -> subject }}</p>
+      @if( $quote -> user_id == $comment -> user_id )
+        <p><label for="">Moderator</label> : <a href="/profile/{{ $comment -> user -> id }}">{{ $comment -> user -> name }}</a></p>
+      @else
+        <p>Komentator : <a href="/profile/{{ $comment -> user -> id }}">{{ $comment -> user -> name }}</a></p>
+      @endif
+      <hr>
+    @endforeach
+
+    @if(count($errors) > 0)
+        <div class="alert alert-danger">
+          <ul>
+              @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+        </div>
+    @endif
+    <form method="POST" action="/comments/{{$quote -> id}}">
+      {{ csrf_field() }}
+      <div class="form-group">
+        <label for="subject">Isi Komentar</label><br>
+        <textarea name="subject" class="form-control" rows="8" cols="80" placeholder="komentar mu . . ."> {{ old('subject') }} </textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" name="button">Kirim</button>
+    </form>
+  </div>
 </div>
 @endsection

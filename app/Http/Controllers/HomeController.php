@@ -34,4 +34,8 @@ class HomeController extends Controller
       return view('profile', compact('user'));
     }
 
+    public function template(){
+      return view('main.index');
+    }
+
 }

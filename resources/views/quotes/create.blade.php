@@ -12,7 +12,6 @@
             @endforeach
           </ul>
       </div>
-
   @endif
 
 

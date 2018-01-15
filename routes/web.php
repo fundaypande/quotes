@@ -4,12 +4,15 @@
 //tetapi untuk function index & show dapat melihat saja
 Route::group(['middleware' => 'auth'], function(){
   Route::resource('quotes', 'QuoteController', ['except' => ['index', 'show']]);
+  Route::post('comments/{id}', 'QuoteCommentCont@store');
 });
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', 'QuoteController@home');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //membuat route pada localhost/quotes yang menampilkan function index dan show
