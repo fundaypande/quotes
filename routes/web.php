@@ -13,6 +13,9 @@ Route::group(['middleware' => 'auth'], function(){
 //     return view('welcome');
 // });
 Route::get('/', 'QuoteController@home');
+Route::get('/post', function(){
+  return view('main.post');
+});
 
 
 Auth::routes();

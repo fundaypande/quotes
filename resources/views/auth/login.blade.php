@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('main.post')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div style="width : 60%" class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
 
@@ -55,7 +55,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                <a href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
                             </div>

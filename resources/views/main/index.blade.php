@@ -61,6 +61,11 @@
 							<br>
 						@endforeach
 					</div>
+					<br>
+					<br>
+					<center>
+						<a href="/quotes" class="button special">Tampilkan Lebih Banyak</a>
+					</center>
 				</div>
 			</section>
 
