@@ -9,6 +9,7 @@
   <br>
   <hr>
 
+
   <!--
   ** mengecek apakah postingan ini milik user yang login
   ** sehingga dapat mengedit dan mendelete postingannya sendiri
@@ -29,7 +30,11 @@
 
   <div class="comment">
     <h4>Daftar Komentar</h4>
-
+    @if(session('msg'))
+        <div class="alert alert-success">
+          <p> {{ session('msg') }}</p>
+        </div>
+    @endif
     <!-- menampilkan komentar -->
     @foreach($quote -> comments as $comment)
       <p>{{ $comment -> subject }}</p>
@@ -37,6 +42,16 @@
         <p><label for="">Moderator</label> : <a href="/profile/{{ $comment -> user -> id }}">{{ $comment -> user -> name }}</a></p>
       @else
         <p>Komentator : <a href="/profile/{{ $comment -> user -> id }}">{{ $comment -> user -> name }}</a></p>
+      @endif
+
+      <!-- update edit komentar -->
+      @if($comment -> isOwner())
+        <a href="/comments/{{ $comment -> id }}/edit" class="btn btn-primary">Edit</a>
+        <form method="POST" action="/comments/{{ $comment -> id }}">
+          {{ csrf_field() }}
+          <input type="hidden" name="_method" value="DELETE">
+          <button type="submit" class="btn btn-danger" name="button">Hapus</button>
+        </form>
       @endif
       <hr>
     @endforeach

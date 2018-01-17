@@ -3,13 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class QuoteComment extends Model
 {
     //
 
     protected $fillable = [
-      'id', 'subject', 'quote_id', 'user_id'
+      'subject', 'quote_id', 'user_id'
     ];
 
     public function user(){
@@ -18,5 +19,11 @@ class QuoteComment extends Model
 
     public function quote(){
       return $this->belongsTo('App\Quote');
+    }
+
+    public function isOwner(){
+      if(Auth::guest())
+        return false;
+      return Auth::user()->id == $this -> user -> id;
     }
 }

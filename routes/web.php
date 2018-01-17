@@ -4,8 +4,13 @@
 //tetapi untuk function index & show dapat melihat saja
 Route::group(['middleware' => 'auth'], function(){
   Route::resource('quotes', 'QuoteController', ['except' => ['index', 'show']]);
+  Route::put('comments/{id}', 'QuoteCommentCont@update');
+  Route::delete('comments/{id}', 'QuoteCommentCont@destroy');
   Route::post('comments/{id}', 'QuoteCommentCont@store');
+  Route::get('comments/{id}/edit', 'QuoteCommentCont@edit');
+
   Route::get('/dashboard', 'HomeController@index')->name('home');
+
 });
 
 

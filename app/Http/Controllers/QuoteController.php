@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+
+
 //menggunakan Tabel atau Model apa
 use App\User;
 use App\Quote;
@@ -63,7 +65,8 @@ class QuoteController extends Controller
     public function show($slug)
     {
         //
-        $quote = Quote::where('slug', $slug)
+        $quote = Quote::with('comments.user')
+          ->where('slug', $slug)
           //->join('users', 'users.id', '=', 'quotes.user_id')
           ->first();
         if(empty($quote)) abort(404);
