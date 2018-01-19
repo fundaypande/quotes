@@ -32,7 +32,12 @@
         <div class="caption">
           {{ $quote -> title }}
           <p><a href="/quotes/{{ $quote -> slug }}" class="btn btn-primary"> Lihat Lutipan </a></p>
-          <p>Penulis : {{ $quote -> name }}</p>
+          <p>Penulis : {{ $quote -> user -> name }}</p>
+          <p>tag :
+            @foreach( $quote -> tags as $tag )
+              <span>{{ $tag -> name }}</span>
+            @endforeach
+          </p>
         </div>
       </div>
     </div>

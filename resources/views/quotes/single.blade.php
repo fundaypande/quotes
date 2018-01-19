@@ -4,7 +4,13 @@
 <div class="container">
   <h2> {{ $quote -> title }} </h2>
   <p>penulis : <a href="/profile/{{ $quote -> user -> id }}">{{ $quote -> user -> name }}</a> - time : {{ $quote -> created_at }}</p>
+  <p>tag :
+    @foreach($quote -> tags as $taga)
+      <span>{{ $taga -> name }}</span>
+    @endforeach
+  </p>
   <hr>
+
   <p>{{ $quote -> subject }}</p>
   <br>
   <hr>

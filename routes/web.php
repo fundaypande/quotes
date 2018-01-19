@@ -2,7 +2,13 @@
 
 //agar yang hanya bisa login yang bisa membuat CRUD quote
 //tetapi untuk function index & show dapat melihat saja
-Route::group(['middleware' => 'auth'], function(){
+Route::group(['middleware' => ['auth','userApprove']], function(){
+
+  Route::group(['middleware' => 'admin'], function(){
+    Route::get('/admin', 'AdminController@index');
+    Route::put('/admin/approve/{id}', 'AdminController@update');
+  });
+
   Route::resource('quotes', 'QuoteController', ['except' => ['index', 'show']]);
   Route::put('comments/{id}', 'QuoteCommentCont@update');
   Route::delete('comments/{id}', 'QuoteCommentCont@destroy');
@@ -12,6 +18,8 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('/dashboard', 'HomeController@index')->name('home');
 
 });
+
+
 
 
 // Route::get('/', function () {

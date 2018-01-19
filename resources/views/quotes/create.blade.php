@@ -15,6 +15,12 @@
   @endif
 
 
+  @if(session('tag_error'))
+    <div class="alert alert-danger">
+      {{ session('tag_error') }}
+    </div>
+  @endif
+
     <form class="" action="/quotes" method="POST">
       <div class="form-group">
         <label for="title"> Judul </label>
@@ -24,6 +30,22 @@
           <label for="subject">Isi Kutipan</label><br>
           <textarea name="subject" class="form-control" rows="8" cols="80" placeholder="kutipan mu . . ."> {{ old('subject') }} </textarea>
         </div>
+
+        <div id="tag_wrapper">
+          <label for="">Tag Maximal 3  :   </label>
+          <button type="button" id="add_tag" class="btn btn-primary" name="button">Tambag Tag</button>
+
+          <select class="" name="tags[]" id="tag_select">
+            <option value="0"> Pilih Tag </option>
+            @foreach($tags as $tag)
+              <option value="{{ $tag -> id }}"> {{ $tag -> name }} </option>
+            @endforeach
+          </select>
+        </div>
+        <br>
+        <br>
+
+      <script src="{{ asset('js/tag.js') }}"></script>
 
         <button type="submit" name="button" class="btn btn-default">Submit Kutipan</button>
 

@@ -21,6 +21,10 @@ class Quote extends Model
       return $this->hasMany('App\QuoteComment');
     }
 
+    public function tags(){
+      return $this->belongsToMany('App\Tag');
+    }
+
     public function isOwner(){
       if(Auth::guest())
         return false;

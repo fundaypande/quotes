@@ -5,7 +5,7 @@
 	<!-- start header -->
 		@include('admin.head')
 	<!-- end header -->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -144,14 +144,13 @@
     <!--  Notifications Plugin    -->
     <script src="{!! asset('assets/js/bootstrap-notify.js') !!}"></script>
 
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
 	<script src="{!! asset('assets/js/light-bootstrap-dashboard.js?v=1.4.0') !!}"></script>
 
 	<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
 	<script src="{!! asset('assets/js/demo.js') !!}"></script>
+
+
 
 	<!-- <script type="text/javascript">
     	$(document).ready(function(){
